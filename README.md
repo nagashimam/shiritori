@@ -30,4 +30,6 @@ I cannot make anything complicated now since I have just started programming. Bu
 
 -dictation mode (CPU says a word and the user has to type it correctly in order to proceed to their turn.)
 
+-attack (CPU sometimes make mistakes and the user has to point out the mistake.)
+
 -timer (the user has to type a word within 30 seconds.)
