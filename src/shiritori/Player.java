@@ -20,7 +20,7 @@ public class Player {
     boolean lose = false;
     
     public void play(){
-        
+        turn ++;
     }
     private String say(){
         String word = null;

@@ -15,7 +15,16 @@ public class Shiritori {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Player a = new Player();
+        Player b = new Player();
+        
+        while (!a.getLose() && !b.getLose()){
+            if (Player.getTurn()%2 == 0){
+                a.play();
+            } else {
+                b.play();
+            }
+        }
     }
     
 }
