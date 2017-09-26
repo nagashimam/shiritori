@@ -16,14 +16,14 @@ public class IOProcessor {
     static FormChecker form = new FormChecker ();
     static AnsChecker ans = new AnsChecker ();
     
-    public static String promptInput (){
+    public static String promptInput (String msg){
         String word = null;
         return word; 
     }
     private static boolean confirmInput (String word){
         return true;
     }
-    private static String convertToKata (String word){
+    public static String convertToKata (String word){
         return word;
     }
     

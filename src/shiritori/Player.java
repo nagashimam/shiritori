@@ -20,10 +20,24 @@ public class Player {
     boolean lose = false;
     
     public void play(){
+        String msg = "Please enter a word which starts with" + prevEnd;    
+        String word = say (msg);
+        if (IOProcessor.ans.isValidAns(word,prevEnd,usedWords)){
+            this.replacePrevEnd (word);
+            usedWords.add(word);
+        } else {
+            this.lose = true;
+        }
         turn ++;
     }
-    private String say(){
+    private String say(String msg){
+        boolean validFormat = false;
         String word = null;
+        while (!validFormat){
+            word = IOProcessor.promptInput(msg);
+            validFormat = IOProcessor.form.isValidForm(word);
+        }
+        IOProcessor.convertToKata(word);
         return word;
     }
     private void replacePrevEnd (String word){
