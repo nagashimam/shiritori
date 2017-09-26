@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package shiritori;
+
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -13,44 +14,52 @@ import java.util.ArrayList;
  * @author KimAnh
  */
 public class Player {
+
     static int turn = 0;
     static String prevEnd = "リ";
-    static List <String> usedWords = new ArrayList <String> (Arrays.asList("シリトリ"));
-    
+    static List<String> usedWords = new ArrayList<String>(Arrays.asList("シリトリ"));
+
     boolean lose = false;
-    
-    public void play(){
-        String msg = "Please enter a word which starts with" + prevEnd;    
-        String word = say (msg);
-        if (IOProcessor.ans.isValidAns(word,prevEnd,usedWords)){
-            this.replacePrevEnd (word);
+
+    public void play() {
+        String msg = "Please enter a word which starts with" + prevEnd;
+        String word = say(msg);
+        if (IOProcessor.ans.isValidAns(word, prevEnd, usedWords)) {
+            this.replacePrevEnd(word);
             usedWords.add(word);
         } else {
             this.lose = true;
         }
-        turn ++;
+        turn++;
     }
-    private String say(String msg){
+
+    private String say(String msg) {
         boolean validFormat = false;
         String word = null;
-        while (!validFormat){
+        while (!validFormat) {
             word = IOProcessor.promptInput(msg);
             validFormat = IOProcessor.form.isValidForm(word);
         }
         IOProcessor.convertToKata(word);
         return word;
     }
-    private void replacePrevEnd (String word){
-        
+
+    private void replacePrevEnd(String word) {
+        char last = word.charAt(word.length() - 1);
+        if (last == 'ャ' || last == 'ュ' || last == 'ョ' || last == 'ー') {
+            this.prevEnd = word.substring(word.length() - 1, word.length() + 1);
+        } else {
+            this.prevEnd = word.substring(word.length(), word.length() + 1);
+        }
     }
-    
+
     //geters
-    public boolean getLose (){
+    public boolean getLose() {
         return this.lose;
     }
-    public static int getTurn (){
+
+    public static int getTurn() {
         return turn;
     }
-    
-    
+
 }
