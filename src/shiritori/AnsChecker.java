@@ -12,17 +12,21 @@ import java.util.List;
  * @author KimAnh
  */
 public class AnsChecker {
-    public static boolean isValidAns (String word, String prevEnd, List<String> usedWords){
-        return true;
+
+    public static boolean isValidAns(String word, String prevEnd, List<String> usedWords) {
+        return startsWithPrevEnd(word, prevEnd) && isNotUsedWords(word, usedWords) && !endsWithN(word);
     }
-    private static boolean startsWithPrevEnd (String word, String prevEnd){
-        return true;
+
+    private static boolean startsWithPrevEnd(String word, String prevEnd) {
+        return prevEnd.equals(word.substring(0, prevEnd.length()));
     }
-    private static boolean isNotUsedWords (String word, List<String> usedWords){
-        return true;
+
+    private static boolean isNotUsedWords(String word, List<String> usedWords) {
+        return usedWords.indexOf(word) == -1;
     }
-    private static boolean endsWithN (String word){
-        return true;
+
+    private static boolean endsWithN(String word) {
+        return word.charAt(word.length() - 1) == 'ƒ“';
     }
-    
+
 }
